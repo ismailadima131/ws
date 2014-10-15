@@ -22,12 +22,12 @@
 		$password = md5($password);
 		//buat koneksi
 		$db = NewADOConnection('mysql');
-		$db->Connect('localhost','root','','data_mahasiswa');
+		$db->Connect('localhost','root','','mahasiswa');
 		//cek username dan password dari database
-		$sql = $db->Execute("SELECT * FROM user where username='riofajar' AND password='megasystem'");
+		$sql = $db->Execute("SELECT * FROM user where username='$username' AND password='$password'");
 		
 		//cek adanya username dan password di database
-		if ($sql->RecodrCount()>=1)// sama dengan mysql_num_rows pada php biasa
+		if ((count ($sql->fields)> 0))// sama dengan mysql_num_rows pada php biasa
 			{ return "Login berhasil";
 			} else {
 			return "Login gagal";
